@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Home');
 });
+
+Route::post('/fileUp', [UploadController::class, 'onUpload']);
+Route::get('/delete', [DeleteController::class, 'onDelete']);
+Route::get('/download/{FolderPath}/{name}', [DownloadController::class, 'onDownload']);
+Route::get('/fileList', [DownloadController::class, 'onSelectFileList']);
